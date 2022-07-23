@@ -1,1 +1,76 @@
-hw4
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Simple Dialogs</title>
+        <link href="images/favicon.ico" rel="icon">
+        <script>
+            function alert_function(e) {
+                alert("Alert button is doing great!");
+                e.preventDefault();
+            }
+            
+            function confirm_function(e) {
+                const text = "Test of confirm button.";
+                let answer;
+                const output = document.getElementById('output');
+            
+                answer = confirm(text);
+                output.innerHTML = `The value returned by the confirm method is : ${ answer }`;
+                e.preventDefault();
+            }
+            
+            function prompt_function(e) {
+                const output = document.getElementById('output');
+                let input = prompt("Test of prompt button:", "Prompt?");
+            
+                if (input != null) {
+                    output.innerHTML = `The value returned by the prompt method is : ${ input }`;
+                }
+            
+                e.preventDefault();
+            }
+            
+            function safer_prompt_function(e) {
+                const output = document.getElementById('output');
+                let input = prompt("Test of safer prompt button:", "Safer prompt?");
+            
+                if (input != null) {
+                    output.innerHTML = `The value returned by the safer prompt method is : ${ input }`;
+                }
+                else {
+                    output.innerHTML = "User didn’t enter anything";
+                }
+            
+                e.preventDefault();
+            }
+            
+            document.addEventListener('DOMContentLoaded', () => {
+                const alert = document.getElementById('alert');
+                const confirm = document.getElementById('confirm');
+                const prompt = document.getElementById('prompt');
+                const safer_prompt = document.getElementById('safer_prompt');
+            
+            
+                alert.addEventListener('click', alert_function);
+                confirm.addEventListener('click', confirm_function);
+                prompt.addEventListener('click', prompt_function);
+                safer_prompt.addEventListener('click', safer_prompt_function);
+            });
+        </script>
+        
+    </head>
+    
+    <body>
+        <header>
+            <h1>Simple Dialogs</h1>
+        </header>
+
+        <button type="button" id="alert">Alert</button>
+        <button type="button" id="confirm">Confirm</button>
+        <button type="button" id="prompt">Prompt</button>
+        <button type="button" id="safer_prompt">Safer Prompt</button>
+        <hr>
+        
+        <p>Output: <output id="output"></output></p>
+    </body>
+</html>
