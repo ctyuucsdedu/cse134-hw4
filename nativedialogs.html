@@ -3,6 +3,7 @@
     <head>
         <title>Simple Dialogs</title>
         <link href="images/favicon.ico" rel="icon">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.10/purify.min.js"></script>
         <script>
             function alert_function(e) {
                 alert("Alert button is doing great!");
@@ -11,17 +12,17 @@
             
             function confirm_function(e) {
                 const text = "Test of confirm button.";
-                let answer;
                 const output = document.getElementById('output');
-            
-                answer = confirm(text);
+                const answer = confirm(text);
+
                 output.innerHTML = `The value returned by the confirm method is : ${ answer }`;
                 e.preventDefault();
             }
             
             function prompt_function(e) {
                 const output = document.getElementById('output');
-                let input = prompt("Test of prompt button:", "Prompt?");
+                const dirty = prompt("Test of prompt button:", "Prompt?");
+                const input = DOMPurify.sanitize(dirty);
             
                 if (input != null) {
                     output.innerHTML = `The value returned by the prompt method is : ${ input }`;
@@ -32,9 +33,10 @@
             
             function safer_prompt_function(e) {
                 const output = document.getElementById('output');
-                let input = prompt("Test of safer prompt button:", "Safer prompt?");
+                const dirty = prompt("Test of safer prompt button:", "Safer prompt?");
+                const input = DOMPurify.sanitize(dirty);
             
-                if (input != null) {
+                if (dirty != null) {
                     output.innerHTML = `The value returned by the safer prompt method is : ${ input }`;
                 }
                 else {

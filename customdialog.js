@@ -35,10 +35,11 @@ export function prompt_function(e) {
     const ok = document.getElementById("ok3");
     const cancel = document.getElementById("cancel3");
     const output = document.getElementById("output");
-    const input = document.getElementById("prompt_input");
 
     ok.addEventListener('click', () => {
-        output.innerHTML = `The value returned by the confirm method is : ${ input.value }`;
+        const dirty = document.getElementById("prompt_input");
+        const input = DOMPurify.sanitize(dirty.value);
+        output.innerHTML = `The value returned by the confirm method is : ${ input }`;
         document.getElementById("div3").hidden = true;
     });
     cancel.addEventListener('click', () => {
