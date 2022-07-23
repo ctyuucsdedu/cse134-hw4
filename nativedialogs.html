@@ -68,6 +68,43 @@
         });
     </script>
 
+    <template id="template1">
+        <div id="div1">
+            <dialog open>
+                <p>Alert pressed.</p>
+                <div>
+                    <button id="ok1">OK</button>
+                </div>
+            </dialog>
+        </div>
+    </template>
+
+    <template id="template2">
+        <div id="div2">
+            <dialog open>
+                <p>Do you confirm?</p>
+                <div>
+                    <button id="ok2">OK</button>
+                    <button id="cancel2">Cancel</button>
+                </div>
+            </dialog>
+        </div>
+    </template>
+
+    <template id="template3">
+        <div id="div3">
+            <dialog open>
+                <label for="prompt_input">What is your name?</label>
+                <input type="text" id="prompt_input" name="prompt_input">
+                <div>
+                    <button id="ok3">OK</button>
+                    <button id="cancel3">Cancel</button>
+                </div>
+            </dialog>
+        </div>
+    </template>
+
+
 </head>
 
 <body>
@@ -82,8 +119,10 @@
     <br>
 
     <p>Output: <output id="output"></output></p>
+
     <hr>
     <hr>
+
     <header>
         <h1>Custom Dialogs</h1>
     </header>
@@ -94,36 +133,7 @@
     <br>
 
     <p>Output: <output id="output2"></output></p>
-    <br>
-
-    <div id="div1" hidden>
-        <dialog open>
-            <p>Alert pressed.</p>
-            <div>
-                <button id="ok1">OK</button>
-            </div>
-        </dialog>
-    </div>
-    <div id="div2" hidden>
-        <dialog open>
-            <p>Do you confirm?</p>
-            <div>
-                <button id="ok2">OK</button>
-                <button id="cancel2">Cancel</button>
-            </div>
-        </dialog>
-    </div>
-    <div id="div3" hidden>
-        <dialog open>
-            <label for="prompt_input">What is your name?</label>
-            <input type="text" id="prompt_input" name="prompt_input">
-            <div>
-                <button id="ok3">OK</button>
-                <button id="cancel3">Cancel</button>
-
-            </div>
-        </dialog>
-    </div>
+    <div id="dialog_place"></div>
 </body>
 
 </html>
