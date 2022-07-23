@@ -50,12 +50,12 @@ export function prompt_function2(e) {
     ok.addEventListener('click', () => {
         const dirty = document.getElementById("prompt_input");
         const input = DOMPurify.sanitize(dirty.value);
-        output.innerHTML = `The value returned by the confirm method is : ${ input }`;
+        output.innerHTML = `The value returned by the prompt method is : ${ input }`;
         const div3 = document.getElementById("div3");
         div3.remove();
     });
     cancel.addEventListener('click', () => {
-        output.innerHTML = "User didn’t enter anything";
+        output.innerHTML = "Canceled";
         const div3 = document.getElementById("div3");
         div3.remove();
     });
