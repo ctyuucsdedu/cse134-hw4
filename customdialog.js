@@ -15,7 +15,6 @@ export function alert_function2(e) {
 
 export function confirm_function2(e) {
     const temp = document.getElementById("template2");
-    console.log("hi");
     var clon = temp.content.cloneNode(true);
     const dialog_place = document.getElementById("dialog_place");
     dialog_place.appendChild(clon);
