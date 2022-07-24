@@ -47,6 +47,12 @@ body main div section {
     margin: var(--section-distance);
 }
 
+body main div section:hover {
+    border: 3px dashed orangered;
+    padding: var(--section-distance);
+    margin: var(--section-distance);
+}
+
 body h2 {
     color: orangered;
     font-family: 'Edu SA Beginner', Arial, Helvetica, sans-serif;
@@ -69,4 +75,29 @@ body h2:hover {
         display: grid;
         grid-template-columns: 1fr;
     }
+}
+
+#nav_bar {
+    margin: 1rem;
+    padding: 3rem;
+    border-bottom: 3px solid royalblue;
+}
+
+nav a {
+    margin: 1rem;
+    padding: 1rem;
+    border: 3px solid royalblue;
+    background-color: lightblue;
+    text-decoration: none;
+}
+
+nav a:hover {
+    text-decoration: none;
+    color:orangered;
+    border-color: orangered;
+}
+
+nav span {
+    color: orangered;
+    font-size: xx-large;
 }
