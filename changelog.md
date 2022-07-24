@@ -3,3 +3,5 @@
 # Style: I have added borders and colors to the links to improve the visual of the site. I also added some hover effect to enhance the user experience.
 
 # Content: I have added explainations to my hobbies such that users could be easier to understand the topics.
+
+# 3rd party JavaScript: I have added Google Analytic to my site.
