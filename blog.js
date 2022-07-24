@@ -15,6 +15,7 @@ function create_post(e) {
         const container = document.getElementById("container");
         const li = document.createElement("li");
         const p = document.createElement("p");
+        p.title = title.value;
         p.innerHTML = `${title.value} (${date.value}): ${summary.value}`;
 
         const edit_button = document.createElement("button");
@@ -38,6 +39,10 @@ function create_post(e) {
                 const date = document.getElementById("date");
                 const summary = document.getElementById("summary");
 
+                localStorage.removeItem(p.title);
+                const arr = [title.value, date.value, summary.value];
+                localStorage.setItem(title.value, JSON.stringify(arr));
+                p.title = title.value;
                 p.innerHTML = `${title.value} (${date.value}): ${summary.value}`;
                 const create_div = document.getElementById("create_div");
                 create_div.remove();
@@ -50,6 +55,7 @@ function create_post(e) {
         });
 
         delete_button.addEventListener('click', () => {
+            localStorage.removeItem(p.title);
             li.remove();
         });
 
@@ -57,6 +63,9 @@ function create_post(e) {
         li.appendChild(edit_button);
         li.appendChild(delete_button);
         container.appendChild(li);
+
+        const arr = [title.value, date.value, summary.value];
+        localStorage.setItem(title.value, JSON.stringify(arr));
 
         const create_div = document.getElementById("create_div");
         create_div.remove();
@@ -74,6 +83,7 @@ function post_constructor(title, date, summary) {
     const container = document.getElementById("container");
     const li = document.createElement("li");
     const p = document.createElement("p");
+    p.title = title;
     p.innerHTML = `${title} (${date}): ${summary}`;
 
     const edit_button = document.createElement("button");
@@ -97,6 +107,10 @@ function post_constructor(title, date, summary) {
             const date = document.getElementById("date");
             const summary = document.getElementById("summary");
 
+            localStorage.removeItem(p.title);
+            const arr = [title.value, date.value, summary.value];
+            localStorage.setItem(title.value, JSON.stringify(arr));
+            p.title = title.value;
             p.innerHTML = `${title.value} (${date.value}): ${summary.value}`;
             const create_div = document.getElementById("create_div");
             create_div.remove();
@@ -109,6 +123,8 @@ function post_constructor(title, date, summary) {
     });
 
     delete_button.addEventListener('click', () => {
+        localStorage.removeItem(p.title);
+        console.log(localStorage);
         li.remove();
     });
 
@@ -120,9 +136,19 @@ function post_constructor(title, date, summary) {
 
 document.addEventListener('DOMContentLoaded', () => {
     const create = document.getElementById("create_button");
-
     create.addEventListener('click', create_post);
-    post_constructor("Post1", "1-1-2022", "This is my first post!");
-    post_constructor("Post Title", "1-2-2022", "This is my second post! This is a summary with 1-2 sentences.");
-    post_constructor("How are you????", "3-3-2022", "Hello World!");
+
+    const post1 = ["Post1", "1-1-2022", "This is my first post!"];
+    const post2 = ["Post Title", "1-2-2022", "This is my second post! This is a summary with 1-2 sentences."];
+    const post3 = ["How are you????", "3-3-2022", "Hello World!"];
+
+    localStorage.setItem(post1[0], JSON.stringify(post1));
+    localStorage.setItem(post2[0], JSON.stringify(post2));
+    localStorage.setItem(post3[0], JSON.stringify(post3));
+
+    for (var i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        const value = JSON.parse(localStorage.getItem(key));
+        post_constructor(value[0], value[1], value[2]);
+    }
 });
